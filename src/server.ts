@@ -17,7 +17,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     let { image_url } = req.query;
     if(image_url){
       const filteredPath = await filterImageFromURL(image_url)
-      res.status(201).sendFile(filteredPath, () => {
+      res.status(200).sendFile(filteredPath, () => {
         deleteLocalFiles([filteredPath])
       })
     } else {
@@ -33,7 +33,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   
 
   // Start the Server
-  app.listen( port, () => {
+  app.listen(port, () => {
       console.log( `server running http://localhost:${ port }` );
       console.log( `press CTRL+C to stop server` );
   } );
